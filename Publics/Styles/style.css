@@ -1,0 +1,8 @@
+#tuto {
+    position: relative;
+}
+
+.imgDiapo {
+    position: absolute;
+    visibility: hidden;
+}
