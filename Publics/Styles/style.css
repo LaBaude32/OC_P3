@@ -1,4 +1,4 @@
-div{
+#explications{
     display: block;
 }
 
@@ -6,19 +6,20 @@ div{
     position: absolute;
     visibility: hidden;
     display: block;
+    margin: 20px;
 }
 #tuto{
     /* padding: 20pc; */
     border: solid;
+    height: 670px;
+    text-align: center;
 }
 
-.reservation{
+#reservation{
 display: block;
-/* margin-top: 1000px; */
 }
 
 #map {
     display: block;
-    margin-top: 500px;
     height: 400px;
 }
