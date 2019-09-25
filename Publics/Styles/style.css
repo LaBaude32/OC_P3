@@ -1,8 +1,24 @@
-#tuto {
-    position: relative;
+div{
+    display: block;
 }
 
 .imgDiapo {
     position: absolute;
     visibility: hidden;
+    display: block;
+}
+#tuto{
+    /* padding: 20pc; */
+    border: solid;
+}
+
+.reservation{
+display: block;
+/* margin-top: 1000px; */
+}
+
+#map {
+    display: block;
+    margin-top: 500px;
+    height: 400px;
 }
