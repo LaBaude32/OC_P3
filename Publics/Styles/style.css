@@ -4,10 +4,15 @@
 
 .imgDiapo {
     position: absolute;
-    visibility: hidden;
-    display: block;
+    /* visibility: hidden; */
+    display: none;
     margin: 20px;
 }
+
+.active{
+    display: block;
+}
+
 #tuto{
     /* padding: 20pc; */
     border: solid;

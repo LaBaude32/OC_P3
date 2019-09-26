@@ -1,6 +1,6 @@
 let bouton = document.querySelector('button');
 let img = document.querySelector('img');
-img.style.visibility = "visible";
+// img.style.visibility = "visible";
 
 function switchDiapo() {
     let listImgs = document.querySelectorAll('img');
@@ -9,38 +9,49 @@ function switchDiapo() {
     let css
     let compteur = 0;
 
-    img.style.visibility = "visible";
-
-    for (image of listImgs) {
-        css = getComputedStyle(image).visibility;
-        if (css == "visible") {
-            //recuperer l'image actuelle affichée
-            imageAffichee = nbImages;
+    // img.style.visibility = "visible";/
+    /*
+        for (image of listImgs) {
+            css = getComputedStyle(image).visibility;
+            if (css == "visible") {
+                //recuperer l'image actuelle affichée
+                imageAffichee = nbImages;
+            }
+            nbImages++; //recupere le nombre total d'image
         }
-        nbImages++; //recupere le nombre total d'image
+
+        for (val of listImgs) {
+            let css = getComputedStyle(val).visibility
+            if (css == "visible") {
+                //cacher les images
+                val.style.visibility = "hidden"
+            }
+            if (compteur == imageAffichee + 1) {
+                // si l'image est celle qui suit l'image affiché, la révéler
+                val.style.visibility = "visible"
+            }
+            compteur++;
+            if (compteur == nbImages - 1) {
+                // si on est à la dernière image, révéler la 1ère
+                img.style.visibility = "visible";
+            }
+        }
+
+    */
+    for (const image in listImgs) {
+        let val = image.getAttribute('class');
+        if (val.includes('active')) {
+            listImgs[image].setAttribute('class', 'imgDiapo img-fluid')
+            console.log(listImgs[image]);
+
+        }
     }
 
-    for (val of listImgs) {
-        let css = getComputedStyle(val).visibility
-        if (css == "visible") {
-            //cacher les images
-            val.style.visibility = "hidden"
-        }
-        if (compteur == imageAffichee + 1) {
-            // si l'image est celle qui suit l'image affiché, la révéler
-            val.style.visibility = "visible"
-        }
-        compteur++;
-        if (compteur == nbImages - 1) {
-            // si on est à la dernière image, révéler la 1ère
-            img.style.visibility = "visible";
-        }
-    }
 }
 
 bouton.addEventListener('click', switchDiapo);
 
-
+/* CARTE
 
 // On initialise la latitude et la longitude de Paris (centre de la carte)
 var lat = 45.7484600;
@@ -100,3 +111,5 @@ let data = fetch(url)
     stations = stations.slice(0,30) // reduire le nombre de stations pour pas faire de surcharge
     initMap(stations);
 });
+
+*/
