@@ -43,13 +43,15 @@ bouton.addEventListener('click', switchDiapo);
 
 
 // On initialise la latitude et la longitude de Paris (centre de la carte)
-var lat = 48.852969;
-var lon = 2.349903;
+var lat = 45.7484600;
+var lon = 4.8467100;
 var macarte = null;
+let markerClusters
 // Fonction d'initialisation de la carte
 function initMap(stations) {
     // Créer l'objet "macarte" et l'insèrer dans l'élément HTML qui a l'ID "map"
     macarte = L.map('map').setView([lat, lon], 11);
+    markerClusters = L.markerClusterGroup(); // Nous initialisons les groupes de marqueurs
     // Leaflet ne récupère pas les cartes (tiles) sur un serveur par défaut. Nous devons lui préciser où nous souhaitons les récupérer. Ici, openstreetmap.fr
     L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
         // Il est toujours bien de laisser le lien vers la source des données
@@ -58,22 +60,27 @@ function initMap(stations) {
         maxZoom: 20
     }).addTo(macarte);
 
-    var customIcon = L.icon({
-        iconUrl: 'icon-marker.png',
-        //shadowUrl: 'icon-shadow.png',
-        iconSize:     [32, 32], // taille de l'icone
-        //shadowSize:   [50, 64], // taille de l'ombre
-        iconAnchor:   [32, 64], // point de l'icone qui correspondra à la position du marker
-        //shadowAnchor: [32, 64],  // idem pour l'ombre
-        popupAnchor:  [-3, -76] // point depuis lequel la popup doit s'ouvrir relativement à l'iconAnchor
-    });
+    // var customIcon = L.icon({
+    //     iconUrl: 'icon-marker.png',
+    //     //shadowUrl: 'icon-shadow.png',
+    //     iconSize:     [32, 32], // taille de l'icone
+    //     //shadowSize:   [50, 64], // taille de l'ombre
+    //     iconAnchor:   [32, 64], // point de l'icone qui correspondra à la position du marker
+    //     //shadowAnchor: [32, 64],  // idem pour l'ombre
+    //     popupAnchor:  [-3, -76] // point depuis lequel la popup doit s'ouvrir relativement à l'iconAnchor
+    // });
 
     for (const station of stations) {
         lat = (station.position.lat);
         lon = (station.position.lng);
+        adresse = (station.address);
 
-        L.marker([lat, lon], {icon: customIcon}).addTo(macarte);
+        let marker = L.marker([lat, lon]).addTo(macarte);
+        marker.bindPopup(adresse);
+        markerClusters.addLayer(marker); // Nous ajoutons le marqueur aux groupes
     }
+
+    macarte.addLayer(markerClusters);
 }
 window.onload = function () {
     // Fonction d'initialisation qui s'exécute lorsque le DOM est chargé
@@ -90,7 +97,6 @@ let data = fetch(url)
 .then(response => response.json())
 .then(function (data) {
     stations = data
-
-
+    stations = stations.slice(0,30) // reduire le nombre de stations pour pas faire de surcharge
     initMap(stations);
 });
