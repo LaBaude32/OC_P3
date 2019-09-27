@@ -1,87 +1,41 @@
 let bouton = document.querySelector('button');
 
-function switchDiapo() {
-    let listImgs = document.querySelectorAll('img');
+let diapo = new Diapo();
 
-    for (const image of listImgs) {
-        let val = image.getAttribute('class');
-        if (val.includes('active')) {
-            image.setAttribute('class', 'imgDiapo img-fluid');
-            let valId = image.getAttribute('id');
-            valId = valId.split('-');
-            valId = valId[1];
-            valId++;
-            valId = 'slider-'+ valId;
-            if (valId == 'slider-5'){
-                valId = 'slider-0'
-            }
-            document.getElementById(valId).setAttribute('class', 'imgDiapo img-fluid active')
-            break;
-        }
-    }
-}
+bouton.addEventListener('click', diapo.switchDiapo);
 
-bouton.addEventListener('click', switchDiapo);
+let lat = 45.7484600;
+let lon = 4.8467100;
 
-/* CARTE
+let map = new Map(lat, lon);
 
-// On initialise la latitude et la longitude de Paris (centre de la carte)
-var lat = 45.7484600;
-var lon = 4.8467100;
-var macarte = null;
-let markerClusters
+
+// CARTE
+
+// On initialise la latitude et la longitude de Lyon
+let lat = 45.7484600;
+let lon = 4.8467100;
+
 // Fonction d'initialisation de la carte
 function initMap(stations) {
     // Créer l'objet "macarte" et l'insèrer dans l'élément HTML qui a l'ID "map"
-    macarte = L.map('map').setView([lat, lon], 11);
-    markerClusters = L.markerClusterGroup(); // Nous initialisons les groupes de marqueurs
-    // Leaflet ne récupère pas les cartes (tiles) sur un serveur par défaut. Nous devons lui préciser où nous souhaitons les récupérer. Ici, openstreetmap.fr
-    L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
-        // Il est toujours bien de laisser le lien vers la source des données
-        attribution: 'données © <a href="//osm.org/copyright">OpenStreetMap</a>/ODbL - rendu <a href="//openstreetmap.fr">OSM France</a>',
-        minZoom: 1,
-        maxZoom: 20
-    }).addTo(macarte);
 
-    // var customIcon = L.icon({
-    //     iconUrl: 'icon-marker.png',
-    //     //shadowUrl: 'icon-shadow.png',
-    //     iconSize:     [32, 32], // taille de l'icone
-    //     //shadowSize:   [50, 64], // taille de l'ombre
-    //     iconAnchor:   [32, 64], // point de l'icone qui correspondra à la position du marker
-    //     //shadowAnchor: [32, 64],  // idem pour l'ombre
-    //     popupAnchor:  [-3, -76] // point depuis lequel la popup doit s'ouvrir relativement à l'iconAnchor
-    // });
+    let macarte = new Map(lat, lon);
 
-    for (const station of stations) {
-        lat = (station.position.lat);
-        lon = (station.position.lng);
-        adresse = (station.address);
-
-        let marker = L.marker([lat, lon]).addTo(macarte);
-        marker.bindPopup(adresse);
-        markerClusters.addLayer(marker); // Nous ajoutons le marqueur aux groupes
-    }
+    macarte.addMarkerByStations(stations);
 
     macarte.addLayer(markerClusters);
 }
-window.onload = function () {
-    // Fonction d'initialisation qui s'exécute lorsque le DOM est chargé
-    // initMap();
-};
-
 
 let api_key = "81aa8312fa8a1075e302560e528cf5d1e0887cea";
 let url = "https://api.jcdecaux.com/vls/v1/stations?contract=Lyon&apiKey=" + api_key;
 
-var stations
+var stations;
 
 let data = fetch(url)
-.then(response => response.json())
-.then(function (data) {
-    stations = data
-    stations = stations.slice(0,30) // reduire le nombre de stations pour pas faire de surcharge
-    initMap(stations);
-});
-
-*/
+    .then(response => response.json())
+    .then(function (data) {
+        stations = data;
+        stations = stations.slice(0, 30); // reduire le nombre de stations pour pas faire de surcharge
+        initMap(stations);
+    });
