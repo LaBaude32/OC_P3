@@ -4,12 +4,6 @@ let diapo = new Diapo();
 
 bouton.addEventListener('click', diapo.switchDiapo);
 
-let lat = 45.7484600;
-let lon = 4.8467100;
-
-let map = new Map(lat, lon);
-
-
 // CARTE
 
 // On initialise la latitude et la longitude de Lyon
