@@ -10,6 +10,8 @@ bouton.addEventListener('click', diapo.switchDiapo);
 let lat = 45.7484600;
 let lon = 4.8467100;
 
+let markerClusters;
+
 // Fonction d'initialisation de la carte
 function initMap(stations) {
     // Créer l'objet "macarte" et l'insèrer dans l'élément HTML qui a l'ID "map"
@@ -18,7 +20,7 @@ function initMap(stations) {
 
     macarte.addMarkerByStations(stations);
 
-    macarte.addLayer(markerClusters);
+    macarte.addLayerToMap(markerClusters);
 }
 
 let api_key = "81aa8312fa8a1075e302560e528cf5d1e0887cea";
@@ -30,6 +32,6 @@ let data = fetch(url)
     .then(response => response.json())
     .then(function (data) {
         stations = data;
-        stations = stations.slice(0, 30); // reduire le nombre de stations pour pas faire de surcharge
+        // stations = stations.slice(0, 30); // reduire le nombre de stations pour pas faire de surcharge
         initMap(stations);
     });
