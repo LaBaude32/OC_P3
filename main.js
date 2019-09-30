@@ -32,6 +32,8 @@ let data = fetch(url)
     .then(response => response.json())
     .then(function (data) {
         stations = data;
-        // stations = stations.slice(0, 30); // reduire le nombre de stations pour pas faire de surcharge
+        stations = stations.slice(0, 30); // reduire le nombre de stations pour pas faire de surcharge
+        console.log(stations);
+
         initMap(stations);
     });

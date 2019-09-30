@@ -24,15 +24,17 @@ class Map {
     addMarkerByStations(stations) {
         for (const station of stations) {
 
-            let lat = (station.position.lat);
-            let lon = (station.position.lng);
-            let infos = (station.address);
+            let lat = station.position.lat;
+            let lon = station.position.lng;
+            let nom = station.name.split('-');
+            nom = nom[1];
+            let infos = 'Station ' + nom + '</br> Adresse : ' + station.address + '</br> Nombre de vélos dispos : ' + station.available_bikes + '</br> Nombre de places vides : ' + station.available_bike_stands;
 
             this.addMarker(lat, lon, infos);
         }
     }
 
-    addLayerToMap(markerClusters){
+    addLayerToMap(markerClusters) {
         this.map.addLayer(markerClusters)
     }
 }
