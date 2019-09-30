@@ -37,3 +37,10 @@ let data = fetch(url)
 
         initMap(stations);
     });
+
+var content = macarte.L.DomUtil.create('div', 'content'),
+    popup = macarte.L.popup().setContent(content);
+
+L.DomEvent.addListener(content, 'click', function (event) {
+    alert('test')
+}, context);

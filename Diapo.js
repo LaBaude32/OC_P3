@@ -1,14 +1,17 @@
 class Diapo {
 
     switchDiapo() {
+        let diapoSelect = document.getElementById('tuto').childNodes;
         let listImgs = document.querySelectorAll('img');
-        let lastImg = document.getElementsByClassName('imgDiapo');
+        let lastImg = listImgs.lastElementChild;
+
+        console.log(diapoSelect);
 
         console.log(listImgs);
         console.log(lastImg);
 
 
-        for (const image of lastImg) {
+        for (const image of listImgs) {
             let val = image.getAttribute('class');
             if (val.includes('active')) {
                 image.setAttribute('class', 'imgDiapo img-fluid');
