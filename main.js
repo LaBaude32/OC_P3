@@ -24,7 +24,7 @@ function initMap(stations) {
 }
 
 let api_key = "81aa8312fa8a1075e302560e528cf5d1e0887cea";
-let url = "https://api.jcdecaux.com/vls/v1/stations?contract=Lyon&apiKey=" + api_key;
+let url = "https://api.jcdecaux.com/vls/v3/stations?contract=Lyon&apiKey=" + api_key;
 
 var stations;
 
@@ -36,4 +36,10 @@ let data = fetch(url)
         console.log(stations);
 
         initMap(stations);
+    });
+
+    $("div").on("click", '.sidebar-open-button', function () {
+        var ID = $(this).attr("data");
+        const resa = new Resa();
+        resa.initResa(ID);
     });

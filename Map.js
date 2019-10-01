@@ -15,23 +15,25 @@ class Map {
         markerClusters = L.markerClusterGroup(); // Nous initialisons les groupes de marqueurs
     }
 
-    addMarker(lat, lon, infos) {
-        let marker = L.marker([lat, lon]).bindPopup(infos);
-        // marker.addTo(this.map)
-        marker.bindTooltip("my tooltip text").openTooltip();
+    addMarker(lat, lon, infosPopup, infosTooltip) {
+        let marker = L.marker([lat, lon]).bindPopup(infosPopup).bindTooltip(infosTooltip).openTooltip();
         markerClusters.addLayer(marker);
     }
 
     addMarkerByStations(stations) {
         for (const station of stations) {
 
-            let lat = station.position.lat;
-            let lon = station.position.lng;
+            let lat = station.position.latitude;
+            let lon = station.position.longitude;
             let nom = station.name.split('-');
+            let velosDipos = station.mainStands.availabilities.bikes;
+            let placesLibres = station.mainStands.availabilities.stands;
             nom = nom[1];
-            let infos = 'Station ' + nom + '</br> Adresse : ' + station.address + '</br> Nombre de vélos dispos : ' + station.available_bikes + '</br> Nombre de places vides : ' + station.available_bike_stands;
+            let infosPopup = '<div class="text-center">Station ' + nom + '</br> Adresse : ' + station.address + '</br> Nombre de vélos dispos    : ' + velosDipos + '</br> Nombre de places vides : ' + placesLibres;
+            infosPopup += '</br><button type="button" id="btnleaf" class="btn btn-primary sidebar-open-button" data = "' + station.number + '" ' + '>Réserver</button></div>';
+            let infosTooltip = nom + '</br> Vélos dispos : ' + velosDipos + '</br> Places vides : ' + placesLibres;
 
-            this.addMarker(lat, lon, infos);
+            this.addMarker(lat, lon, infosPopup, infosTooltip);
         }
     }
 
