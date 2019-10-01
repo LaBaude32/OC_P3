@@ -18,6 +18,7 @@ class Map {
     addMarker(lat, lon, infos) {
         let marker = L.marker([lat, lon]).bindPopup(infos);
         // marker.addTo(this.map)
+        marker.bindTooltip("my tooltip text").openTooltip();
         markerClusters.addLayer(marker);
     }
 
