@@ -9,18 +9,19 @@ class Resa {
     initResa(ID) {
         let urlStation = "https://api.jcdecaux.com/vls/v3/stations/" + ID + "?contract=Lyon&apiKey=" + api_key;
 
-        var stationResa;
+        var station;
 
-        let dataStation = fetch(urlStation)
-            .then(responseB => responseB.json())
-            .then(function (dataStation) {
-                stationResa = dataStation;
-                console.log(stationResa);
-                this.formHydrate();
+        let data = fetch(urlStation)
+            .then(response => response.json())
+            .then(function (data) {
+                station = data;
+                console.log(station);
+                this.formHydrate(station);
             });
+
     }
 
-    formHydrate() {
+    formHydrate(station) {
         let nom = stationResa.name.split('-')[1];
 
         formStationNom.innerText = nom;

@@ -40,6 +40,6 @@ let data = fetch(url)
 
     $("div").on("click", '.sidebar-open-button', function () {
         var ID = $(this).attr("data");
-        let resa = new Resa();
+        var resa = new Resa();
         resa.initResa(ID);
     });
