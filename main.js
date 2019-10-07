@@ -1,4 +1,5 @@
 let bouton = document.querySelector('button');
+let lancementCompteur = document.getElementById('LancementCompteur');
 
 let diapo = new Diapo();
 
@@ -43,3 +44,6 @@ let data = fetch(url)
         var resa = new Resa();
         resa.initResa(ID);
     });
+
+    var Testresa = new Resa();
+    lancementCompteur.addEventListener('click', Testresa.compteur);
