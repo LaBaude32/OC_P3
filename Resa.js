@@ -15,9 +15,11 @@ class Resa {
             .then(response => response.json())
             .then(function (data) {
                 station = data;
+
+                this.formHydrate(station);
             });
 
-        this.formHydrate(station);
+
     }
 
     formHydrate(station) {
