@@ -30,7 +30,7 @@ class Map {
 			let placesLibres = station.mainStands.availabilities.stands;
 			nom = nom[1];
 			let infosPopup = '<div class="text-center">Station ' + nom + '</br> Adresse : ' + station.address + '</br> Nombre de vélos dispos    : ' + velosDipos + '</br> Nombre de places vides : ' + placesLibres;
-			infosPopup += '</br><button type="button" id="btnleaf" class="btn btn-primary sidebar-open-button" data = "' + station.number + '" ' + '>Réserver</button></div>';
+			infosPopup += '</br><button type="button" class="btn btn-primary sidebar-open-button" onclick="showStation(' + station.number + ')">Réserver</button></div>';
 			let infosTooltip = nom + '</br> Vélos dispos : ' + velosDipos + '</br> Places vides : ' + placesLibres;
 
 			this.addMarker(lat, lon, infosPopup, infosTooltip);
@@ -38,6 +38,6 @@ class Map {
 	}
 
 	addLayerToMap(markerClusters) {
-		this.map.addLayer(markerClusters)
+		this.map.addLayer(markerClusters);
 	}
 }

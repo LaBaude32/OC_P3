@@ -19,8 +19,6 @@ class Resa {
 	}
 
 	formHydrate(station) {
-		console.log(station);
-
 		let nom = station.name.split('-')[1];
 		let adresse = station.address;
 		if (adresse == "") {
