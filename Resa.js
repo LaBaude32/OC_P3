@@ -1,4 +1,4 @@
-class Resa{
+class Resa {
 	constructor() {
 		this.formStationNom = document.getElementById('stationNom');
 		this.formStationAdresse = document.getElementById('StationAdresse');
@@ -9,28 +9,26 @@ class Resa{
 	initResa(ID) {
 		let urlStation = "https://api.jcdecaux.com/vls/v3/stations/" + ID + "?contract=Lyon&apiKey=" + api_key;
 
-		let station;
+		let element = this;
 
 		let data = fetch(urlStation)
 			.then(response => response.json())
 			.then(function (data) {
-				station = data;
-
-				this.formHydrate(station);
+				element.formHydrate(data);
 			});
-
-
 	}
 
 	formHydrate(station) {
 		console.log(station);
 
-		// let nom = station.name.split('-')[1];
-		let nom = 'test'
-
+		let nom = station.name.split('-')[1];
+		let adresse = station.address;
+		if (adresse == "") {
+			adresse = nom;
+		}
 		this.formStationNom.innerText = nom;
-		// formStationAdresse.innerText = stationResa.address;
-		// formStationVelosDispos.innerText = stationResa.mainStands.availabilities.bikes
+		this.formStationAdresse.innerText = "Adresse : " + adresse;
+		this.formStationVelosDispos.innerText = "Nombre de vélos diponibles : " + station.mainStands.availabilities.bikes;
 	}
 
 	compteur() {
