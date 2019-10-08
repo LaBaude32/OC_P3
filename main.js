@@ -15,13 +15,13 @@ let markerClusters;
 
 // Fonction d'initialisation de la carte
 function initMap(stations) {
-    // Créer l'objet "macarte" et l'insèrer dans l'élément HTML qui a l'ID "map"
+	// Créer l'objet "macarte" et l'insèrer dans l'élément HTML qui a l'ID "map"
 
-    let macarte = new Map(lat, lon);
+	let macarte = new Map(lat, lon);
 
-    macarte.addMarkerByStations(stations);
+	macarte.addMarkerByStations(stations);
 
-    macarte.addLayerToMap(markerClusters);
+	macarte.addLayerToMap(markerClusters);
 }
 
 let api_key = "81aa8312fa8a1075e302560e528cf5d1e0887cea";
@@ -30,20 +30,20 @@ let url = "https://api.jcdecaux.com/vls/v3/stations?contract=Lyon&apiKey=" + api
 var stations;
 
 let data = fetch(url)
-    .then(response => response.json())
-    .then(function (data) {
-        stations = data;
-        // stations = stations.slice(0, 30); // reduire le nombre de stations pour pas faire de surcharge
-        console.log(stations);
+	.then(response => response.json())
+	.then(function (data) {
+		stations = data;
+		// stations = stations.slice(0, 30); // reduire le nombre de stations pour pas faire de surcharge
+		console.log(stations);
 
-        initMap(stations);
-    });
+		initMap(stations);
+	});
 
-    $("div").on("click", '.sidebar-open-button', function () {
-        var ID = $(this).attr("data");
-        var resa = new Resa();
-        resa.initResa(ID);
-    });
+$("div").on("click", '.sidebar-open-button', function () {
+	var ID = $(this).attr("data");
+	var resa = new Resa();
+	resa.initResa(ID);
+});
 
-    var Testresa = new Resa();
-    lancementCompteur.addEventListener('click', Testresa.compteur);
+var Testresa = new Resa();
+lancementCompteur.addEventListener('click', Testresa.compteur);
