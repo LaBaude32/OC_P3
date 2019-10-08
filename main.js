@@ -36,10 +36,12 @@ let data = fetch(url)
 		initMap(stations);
 	});
 
-function showStation(id){
-    let resa = new Resa();
+function showStation(id) {
+	let resa = new Resa();
 	resa.initResa(id);
 }
 
-var Testresa = new Resa();
-lancementCompteur.addEventListener('click', Testresa.compteur);
+let launchCompteur = new Resa();
+lancementCompteur.addEventListener('click', function () {
+	launchCompteur.compteur();
+});

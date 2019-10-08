@@ -30,10 +30,33 @@ class Resa {
 	}
 
 	compteur() {
-		console.log(this.compteurText);
-
 		let dateActu = new Date();
-		// let heures = dateActu.getHours();
-		this.compteurText.innerText = dateActu;
+
+		let minutes = 19;
+		let secondes = 60;
+		let secondesTxt;
+
+		let intervalID = setInterval(plusUneSec, 1000);
+
+		let element = this;
+
+		function plusUneSec() {
+			secondes--;
+			if (minutes == 0 && secondes == 0) {
+				clearInterval(intervalID);
+				element.compteurText.innerText = 'Reservation expirée.';
+			} else {
+				if (secondes == 0) {
+					minutes--;
+					secondes = 59;
+				}
+				if (secondes < 10) {
+					secondesTxt = '0' + secondes;
+				} else {
+					secondesTxt = secondes;
+				}
+				element.compteurText.innerText = minutes + ':' + secondesTxt;
+			}
+		}
 	}
 }
