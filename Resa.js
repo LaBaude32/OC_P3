@@ -4,6 +4,7 @@ class Resa {
 		this.formStationAdresse = document.getElementById('StationAdresse');
 		this.formStationVelosDispos = document.getElementById('StationVelosDispos');
 		this.compteurText = document.getElementById('compteur');
+		this.canvas = document.querySelector('canvas');
 	}
 
 	initResa(ID) {
@@ -58,5 +59,10 @@ class Resa {
 				element.compteurText.innerText = minutes + ':' + secondesTxt;
 			}
 		}
+	}
+
+	signature(){
+		console.log(this.canvas);
+
 	}
 }

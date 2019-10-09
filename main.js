@@ -45,3 +45,9 @@ let launchCompteur = new Resa();
 lancementCompteur.addEventListener('click', function () {
 	launchCompteur.compteur();
 });
+
+let canvas = new Resa();
+let lancementCanvas = document.getElementById('lancementCanvas');
+lancementCanvas.addEventListener('click', function (){
+	canvas.signature();
+});
