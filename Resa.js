@@ -4,7 +4,7 @@ class Resa {
 		this.formStationAdresse = document.getElementById('StationAdresse');
 		this.formStationVelosDispos = document.getElementById('StationVelosDispos');
 		this.compteurText = document.getElementById('compteur');
-		this.canvas = document.querySelector('canvas');
+		this.canvas = document.getElementById('c1');
 	}
 
 	initResa(ID) {
@@ -62,7 +62,16 @@ class Resa {
 	}
 
 	signature(){
-		console.log(this.canvas);
+		// console.log(this.canvas);
+		this.canvas.width = 300;
+		this.canvas.height = 200;
+		let draw = false;
+		let ctx = this.canvas.getContext('2d');
+		ctx.fillStyle = '#4444CC'; //Nuance de bleu
+		let x = 12;
+		let y = 150;
+		ctx.fillRect(y, x, 2, 2);
+		// console.log(ctx);
 
 	}
 }

@@ -1,9 +1,9 @@
-let bouton = document.querySelector('button');
+let lancementDiapo = document.getElementById('suivant');
 let lancementCompteur = document.getElementById('LancementCompteur');
 
 let diapo = new Diapo();
 
-bouton.addEventListener('click', diapo.switchDiapo);
+lancementDiapo.addEventListener('click', diapo.switchDiapo);
 
 // CARTE
 
@@ -46,8 +46,9 @@ lancementCompteur.addEventListener('click', function () {
 	launchCompteur.compteur();
 });
 
+// let lancementCanvas = document.getElementById('lancementCanvas');
+let lancementCanvas = document.getElementById('c1');
 let canvas = new Resa();
-let lancementCanvas = document.getElementById('lancementCanvas');
-lancementCanvas.addEventListener('click', function (){
+lancementCanvas.addEventListener('mouseover', function (){
 	canvas.signature();
 });
