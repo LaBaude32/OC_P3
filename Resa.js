@@ -92,10 +92,6 @@ class Resa {
 		// console.log(this.draw);
 	}
 
-	cleanCanvas() {
-		this.clearRect(0, 0, this.canvas.width, this.canvas.height);
-	}
-
 	clearCanvas() {
 		// utilise la couleur d'arrière plan du canvas
 		this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
