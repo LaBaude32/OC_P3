@@ -5,6 +5,7 @@ class Resa {
 		this.formStationVelosDispos = document.getElementById('StationVelosDispos');
 		this.compteurText = document.getElementById('compteur');
 		this.canvas = document.getElementById('c1');
+		this.ctx = this.canvas.getContext('2d');
 
 	}
 
@@ -70,7 +71,7 @@ class Resa {
 		// this.canvas.width = 300;
 		// this.canvas.height = 200;
 		// let draw = false;
-		let ctx = this.canvas.getContext('2d');
+		let ctx = this.ctx;
 		ctx.fillStyle = 'orange';
 		ctx.canvas.addEventListener('mousemove', function (event) {
 			let mouseX = event.x - ctx.canvas.offsetLeft;
@@ -93,5 +94,10 @@ class Resa {
 
 	cleanCanvas() {
 		this.clearRect(0, 0, this.canvas.width, this.canvas.height);
+	}
+
+	clearCanvas() {
+		// utilise la couleur d'arrière plan du canvas
+		this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 	}
 }

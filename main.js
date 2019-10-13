@@ -55,5 +55,5 @@ lancementCanvas.addEventListener('mouseover', function (){
 });
 
 canvasErase.addEventListener('click', function () {
-	canvas.cleanCanvas();
+	canvas.clearCanvas();
 });
