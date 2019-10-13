@@ -9,14 +9,10 @@
     <!-- <script src="Publics/Bootstrap/js/bootstrap.bundle.min.js"></script> -->
     <link rel="stylesheet" href="Publics/Leaflet/leaflet.css" />
     <script src="Publics/Leaflet/leaflet.js"></script>
-    <link rel="stylesheet" type="text/css"
-        href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css" />
-    <link rel="stylesheet" type="text/css"
-        href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css" />
-    <script type='text/javascript'
-        src='https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js'></script>
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
-        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css" />
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css" />
+    <script type='text/javascript' src='https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js'></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <title>Reservation d'un vélo</title>
 </head>
 
@@ -33,16 +29,11 @@
                 <h2>Comment faire :</h2>
                 <button id="suivant" class="btn btn-primary mt-4">Suivant</button>
                 <div id="tuto">
-                    <img src="Publics/Images/Diapo/1.jpg" alt="image explicative de l'application'" id="slider-0"
-                        class="imgDiapo img-fluid active">
-                    <img src="Publics/Images/Diapo/2.jpg" alt="image explicative de l'application'" id="slider-1"
-                        class="imgDiapo img-fluid">
-                    <img src="Publics/Images/Diapo/3.jpg" alt="image explicative de l'application'" id="slider-2"
-                        class="imgDiapo img-fluid">
-                    <img src="Publics/Images/Diapo/4.jpg" alt="image explicative de l'application'" id="slider-3"
-                        class="imgDiapo img-fluid">
-                    <img src="Publics/Images/Diapo/5.jpg" alt="image explicative de l'application'" id="slider-4"
-                        class="imgDiapo img-fluid">
+                    <img src="Publics/Images/Diapo/1.jpg" alt="image explicative de l'application'" id="slider-0" class="imgDiapo img-fluid active">
+                    <img src="Publics/Images/Diapo/2.jpg" alt="image explicative de l'application'" id="slider-1" class="imgDiapo img-fluid">
+                    <img src="Publics/Images/Diapo/3.jpg" alt="image explicative de l'application'" id="slider-2" class="imgDiapo img-fluid">
+                    <img src="Publics/Images/Diapo/4.jpg" alt="image explicative de l'application'" id="slider-3" class="imgDiapo img-fluid">
+                    <img src="Publics/Images/Diapo/5.jpg" alt="image explicative de l'application'" id="slider-4" class="imgDiapo img-fluid">
                 </div>
             </div>
         </div>
@@ -71,10 +62,12 @@
                         </form>
                     </div>
                     <button id="LancementCompteur" class="btn btn-primary mt-4">Lancer le compteur</button>
-                    <p>Temps restant : <sp id="compteur"></sp></p>
-                    <button id="lancementCanvas" class="btn btn-primary mt-4">Canvas</button>
-                    <button id="canvasErase" class="btn btn-primary">Effacer</button>
+                    <p>Temps restant : <sp id="compteur"></sp>
+                    </p>
+
                     <canvas id="c1" style="background-color : #e3e3e3;"></canvas>
+                    <p id="test"></p>
+                    <button id="canvasErase" class="btn btn-primary">Effacer</button>
                 </div>
             </div>
         </div>

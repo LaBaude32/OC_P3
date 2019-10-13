@@ -1,5 +1,6 @@
 let lancementDiapo = document.getElementById('suivant');
 let lancementCompteur = document.getElementById('LancementCompteur');
+let canvasErase = document.getElementById('canvasErase');
 
 let diapo = new Diapo();
 
@@ -51,4 +52,8 @@ let lancementCanvas = document.getElementById('c1');
 let canvas = new Resa();
 lancementCanvas.addEventListener('mouseover', function (){
 	canvas.signature();
+});
+
+canvasErase.addEventListener('click', function () {
+	canvas.cleanCanvas();
 });

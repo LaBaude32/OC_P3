@@ -5,6 +5,7 @@ class Resa {
 		this.formStationVelosDispos = document.getElementById('StationVelosDispos');
 		this.compteurText = document.getElementById('compteur');
 		this.canvas = document.getElementById('c1');
+
 	}
 
 	initResa(ID) {
@@ -28,6 +29,9 @@ class Resa {
 		this.formStationNom.innerText = nom;
 		this.formStationAdresse.innerText = "Adresse : " + adresse;
 		this.formStationVelosDispos.innerText = "Nombre de vélos diponibles : " + station.mainStands.availabilities.bikes;
+
+		//TODO: faire une alert si ya plus de velo;
+
 	}
 
 	compteur() {
@@ -61,17 +65,33 @@ class Resa {
 		}
 	}
 
-	signature(){
+	signature() {
 		// console.log(this.canvas);
-		this.canvas.width = 300;
-		this.canvas.height = 200;
-		let draw = false;
+		// this.canvas.width = 300;
+		// this.canvas.height = 200;
+		// let draw = false;
 		let ctx = this.canvas.getContext('2d');
-		ctx.fillStyle = '#4444CC'; //Nuance de bleu
-		let x = 12;
-		let y = 150;
-		ctx.fillRect(y, x, 2, 2);
-		// console.log(ctx);
+		ctx.fillStyle = 'orange';
+		ctx.canvas.addEventListener('mousemove', function (event) {
+			let mouseX = event.x - ctx.canvas.offsetLeft;
+			let mouseY = event.y - ctx.canvas.offsetTop;
+			let status = document.getElementById('test');
+			status.innerHTML = mouseX + ' | ' + mouseY;
+			ctx.fillRect(mouseY, mouseX, 2, 2);
+		});
 
+		// console.log(ctx);
+		// this.canvas.addEventListener("mousedown", function () {
+		// 	this.draw = true;
+		// });
+		// this.canvas.addEventListener("mouseup", function () {
+		// 	this.draw = false;
+		// });
+
+		// console.log(this.draw);
+	}
+
+	cleanCanvas() {
+		this.clearRect(0, 0, this.canvas.width, this.canvas.height);
 	}
 }
