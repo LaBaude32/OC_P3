@@ -32,14 +32,13 @@ class Resa {
 			this.formStationNom.innerText = nom;
 			this.formStationAdresse.innerText = "Adresse : " + adresse;
 			this.formStationVelosDispos.innerText = "Nombre de vélos diponibles : " + nbVelosDipos;
-		}else {
+		} else {
 			alert('Il n\'y a pas de vélo disponnible dans cette station.\n\nVeuillez choisir une autre station');
 		}
 	}
 
 	compteur() {
-		let dateActu = new Date();
-
+		this.checkLocalStorage();
 		let minutes = 19;
 		let secondes = 60;
 		let secondesTxt;
@@ -105,5 +104,37 @@ class Resa {
 
 	clearCanvas() {
 		this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+	}
+
+	checkLocalStorage() {
+		if (localStorage.getItem('date')) {
+			this.useDate();
+		} else {
+			this.setDate();
+		}
+	}
+
+	setDate() {
+		let dateActu = new Date();
+		let day = dateActu.getDay() + ' | ' + dateActu.getDate() + ' | ' + dateActu.getMonth();
+		let heure = dateActu.getHours();
+		let min = dateActu.getMinutes();
+		let sec = dateActu.getSeconds();
+		localStorage.setItem('date', day);
+		localStorage.setItem('heure', heure);
+		localStorage.setItem('min', min);
+		localStorage.setItem('sec', sec);
+		// useDate(); // à voir si reelemen necessaire
+	}
+
+	useDate(){
+		let dateAncienneDay = localStorage.getItem('date');
+		let heureA = localStorage.getItem('heure');
+		let minA = localStorage.getItem('min');
+		let secA = localStorage.getItem('sec');
+
+		console.log(dateAncienneDay,heureA);
+		let dateActu = new Date();
+		console.log(dateActu);
 	}
 }
