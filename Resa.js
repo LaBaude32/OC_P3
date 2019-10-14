@@ -21,17 +21,20 @@ class Resa {
 	}
 
 	formHydrate(station) {
-		let nom = station.name.split('-')[1];
-		let adresse = station.address;
-		if (adresse == "") {
-			adresse = nom;
+		let nbVelosDipos = station.mainStands.availabilities.bikes;
+		if (nbVelosDipos > 0) {
+			let nom = station.name.split('-')[1];
+			let adresse = station.address;
+			if (adresse == "") {
+				adresse = nom;
+			}
+			document.getElementById('form').style.display = 'block';
+			this.formStationNom.innerText = nom;
+			this.formStationAdresse.innerText = "Adresse : " + adresse;
+			this.formStationVelosDispos.innerText = "Nombre de vélos diponibles : " + nbVelosDipos;
+		}else {
+			alert('Il n\'y a pas de vélo disponnible dans cette station.\n\nVeuillez choisir une autre station');
 		}
-		this.formStationNom.innerText = nom;
-		this.formStationAdresse.innerText = "Adresse : " + adresse;
-		this.formStationVelosDispos.innerText = "Nombre de vélos diponibles : " + station.mainStands.availabilities.bikes;
-
-		//TODO: faire une alert si ya plus de velo;
-
 	}
 
 	compteur() {
@@ -44,6 +47,9 @@ class Resa {
 		let intervalID = setInterval(plusUneSec, 1000);
 
 		let element = this;
+
+		document.getElementById('displayTimer').style.visibility = 'visible';
+		document.getElementById('form').style.display = 'none';
 
 		function plusUneSec() {
 			secondes--;
@@ -98,7 +104,6 @@ class Resa {
 	}
 
 	clearCanvas() {
-		// utilise la couleur d'arrière plan du canvas
 		this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 	}
 }

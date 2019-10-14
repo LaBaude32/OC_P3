@@ -44,12 +44,14 @@
                 <div id="appli">
                     <div id="map">
                     </div>
-                    <hr class="mt-5">
+                    <h2 id="stationNom"></h2>
+                    <p id="StationAdresse"></p>
+                    <p id="StationVelosDispos"></p>
                     <div id="form">
+                        <hr class="mt-5">
                         <form>
-                            <h2 id="stationNom"></h2>
-                            <p id="StationAdresse"></p>
-                            <p id="StationVelosDispos"></p>
+
+                            <h3>Formulaire de réservation :</h3>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Nom</label>
                                 <input type="text" class="form-control" id="Name" placeholder="Coupey">
@@ -58,16 +60,14 @@
                                 <label for="exampleInputEmail1">Prénom</label>
                                 <input type="text" class="form-control" id="FirstName" placeholder="Baudouin">
                             </div>
-                            <button type="submit" class="btn btn-primary">Réserver</button>
                         </form>
+                        <p>Signature :</p>
+                        <canvas id="c1" style="background-color : #e3e3e3;"></canvas>
+                        <p id="test"></p>
+                        <button id="canvasErase" class="btn btn-danger">Effacer</button>
+                        <button type="submit" id="LancementCompteur" class="btn btn-primary">Valider la réservation</button>
                     </div>
-                    <button id="LancementCompteur" class="btn btn-primary mt-4">Lancer le compteur</button>
-                    <p>Temps restant : <sp id="compteur"></sp>
-                    </p>
-
-                    <canvas id="c1" style="background-color : #e3e3e3;"></canvas>
-                    <p id="test"></p>
-                    <button id="canvasErase" class="btn btn-primary">Effacer</button>
+                    <p id="displayTimer" class="font-weight-bold">Temps restant : <span id="compteur"></span></p>
                 </div>
             </div>
         </div>

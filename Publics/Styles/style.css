@@ -28,3 +28,11 @@ display: block;
     display: block;
     height: 400px;
 }
+
+#form{
+    display: none;
+}
+
+#displayTimer{
+    visibility: hidden;
+}
