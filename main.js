@@ -43,14 +43,16 @@ function showStation(id) {
 }
 
 let launchCompteur = new Resa();
+// lancementCompteur.addEventListener('submit', function () {
 lancementCompteur.addEventListener('click', function () {
 	launchCompteur.compteur();
+	//:TODO utiliser submit de façon a ce que les champs soient completés. -> problème de rechargement de la page.
 });
 
 // let lancementCanvas = document.getElementById('lancementCanvas');
 let lancementCanvas = document.getElementById('c1');
 let canvas = new Resa();
-lancementCanvas.addEventListener('mouseover', function (){
+lancementCanvas.addEventListener('mouseover', function () {
 	canvas.signature();
 });
 

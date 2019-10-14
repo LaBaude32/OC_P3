@@ -79,7 +79,7 @@ class Resa {
 		let own = ctx.canvas.offsetTop;
 		let parent = ctx.canvas.offsetParent.offsetTop;
 		// let total = parent - own - 564; //ordiportable
-		let total = parent - own - 564 + 274; //ordifixe
+		let total = parent - own - 564 + 248; //ordifixe
 		console.log(own);
 		console.log(parent);
 		console.log(total);
