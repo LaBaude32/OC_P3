@@ -6,7 +6,6 @@ class Resa {
 		this.compteurText = document.getElementById('compteur');
 		this.canvas = document.getElementById('c1');
 		this.ctx = this.canvas.getContext('2d');
-
 	}
 
 	initResa(ID) {
@@ -73,12 +72,20 @@ class Resa {
 		// let draw = false;
 		let ctx = this.ctx;
 		ctx.fillStyle = 'orange';
+
+		let own = ctx.canvas.offsetTop;
+		let parent = ctx.canvas.offsetParent.offsetTop;
+		let total = parent - own - 564;
+		console.log(own);
+		console.log(parent);
+		console.log(total);
+
 		ctx.canvas.addEventListener('mousemove', function (event) {
-			let mouseX = event.x - ctx.canvas.offsetLeft;
-			let mouseY = event.y - ctx.canvas.offsetTop;
-			let status = document.getElementById('test');
+			let mouseX = event.x - ctx.canvas.offsetLeft - ctx.canvas.offsetParent.offsetLeft;
+			let mouseY = event.y - ctx.canvas.offsetTop - total;
+			let status = document.getElementById('test'); //Affichage des coordonées
 			status.innerHTML = mouseX + ' | ' + mouseY;
-			ctx.fillRect(mouseY, mouseX, 2, 2);
+			ctx.fillRect(mouseX, mouseY, 2, 2);
 		});
 
 		// console.log(ctx);
