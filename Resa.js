@@ -66,16 +66,14 @@ class Resa {
 	}
 
 	signature() {
-		// console.log(this.canvas);
-		// this.canvas.width = 300;
-		// this.canvas.height = 200;
-		// let draw = false;
+		let draw = false;
 		let ctx = this.ctx;
 		ctx.fillStyle = 'orange';
 
 		let own = ctx.canvas.offsetTop;
 		let parent = ctx.canvas.offsetParent.offsetTop;
-		let total = parent - own - 564;
+		// let total = parent - own - 564; //ordiportable
+		let total = parent - own - 564 + 274; //ordifixe
 		console.log(own);
 		console.log(parent);
 		console.log(total);
@@ -85,18 +83,18 @@ class Resa {
 			let mouseY = event.y - ctx.canvas.offsetTop - total;
 			let status = document.getElementById('test'); //Affichage des coordonées
 			status.innerHTML = mouseX + ' | ' + mouseY;
-			ctx.fillRect(mouseX, mouseY, 2, 2);
+			if (draw == true) {
+				ctx.fillRect(mouseX, mouseY, 2, 2);
+			}
 		});
 
-		// console.log(ctx);
-		// this.canvas.addEventListener("mousedown", function () {
-		// 	this.draw = true;
-		// });
-		// this.canvas.addEventListener("mouseup", function () {
-		// 	this.draw = false;
-		// });
+		ctx.canvas.addEventListener('mouseup', function () {
+			draw = false;
+		});
 
-		// console.log(this.draw);
+		ctx.canvas.addEventListener('mousedown', function () {
+			draw = true;
+		});
 	}
 
 	clearCanvas() {
