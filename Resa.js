@@ -38,7 +38,8 @@ class Resa {
 	}
 
 	compteur() {
-		this.checkLocalStorage();
+		// this.checkLocalStorage();
+		this.setDate();
 		let minutes = 19;
 		let secondes = 60;
 		let secondesTxt;
