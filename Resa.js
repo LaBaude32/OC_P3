@@ -39,7 +39,7 @@ class Resa {
     }
 
     compteur() {
-        // this.checkLocalStorage();
+        this.checkDate();
         this.setDate();
         let minutes = 19;
         let secondes = 60;
@@ -100,42 +100,18 @@ class Resa {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
     }
 
-    checkLocalStorage() {
-        if (localStorage.getItem('date')) {
-            this.useDate();
-        } else {
-            this.setDate();
-        }
-    }
-
     setDate() {
-        let dateActu = new Date();
-        let day = dateActu.getDay() + ' | ' + dateActu.getDate() + ' | ' + dateActu.getMonth();
-        let heure = dateActu.getHours();
-        let min = dateActu.getMinutes();
-        let sec = dateActu.getSeconds();
-        localStorage.setItem('date', day);
-        localStorage.setItem('heure', heure);
-        localStorage.setItem('min', min);
-        localStorage.setItem('sec', sec);
-        // useDate(); // à voir si reelement necessaire
+        let stockedDate = Date.now();
+        sessionStorage.setItem('date', stockedDate);
 
 		// TODO:  nom et prenom en localStorage, le temps en session.
 		// TODO:  faire un ynds comme en PHP
 		// TODO:
     }
 
-    useDate() {
-        let dateAncienneDay = localStorage.getItem('date');
-        let heureA = localStorage.getItem('heure');
-        let minA = localStorage.getItem('min');
-        let secA = localStorage.getItem('sec');
-
-        console.log(dateAncienneDay);
-        console.log(heureA);
-        console.log(minA);
-        console.log(secA);
-        let dateActu = new Date();
-        console.log(dateActu);
+    checkDate() {
+        let stockedDate = new Date(Number(sessionStorage.getItem('date')));
+        let actualDate = Date.now();
+        console.log(stockedDate);
     }
 }
