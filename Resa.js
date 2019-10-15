@@ -133,7 +133,10 @@ class Resa {
 		let minA = localStorage.getItem('min');
 		let secA = localStorage.getItem('sec');
 
-		console.log(dateAncienneDay,heureA);
+		console.log(dateAncienneDay);
+		console.log(heureA);
+		console.log(minA);
+		console.log(secA);
 		let dateActu = new Date();
 		console.log(dateActu);
 	}
