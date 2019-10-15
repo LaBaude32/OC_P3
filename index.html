@@ -24,7 +24,7 @@
                 <hr>
             </div>
         </div>
-        <div id="explications" class="row mb-5">
+        <div id="explications" class="row">
             <div class="col-12">
                 <h2>Comment faire :</h2>
                 <button id="suivant" class="btn btn-primary mt-4">Suivant</button>
@@ -38,27 +38,28 @@
             </div>
         </div>
         <hr>
-        <div id="reservation" class="row mb-5">
+        <div id="reservation" class="row mb-2">
             <div class="col-12">
                 <h2>Réserver</h2>
-                <div id="appli">
-                    <div id="map">
-                    </div>
-                    <h2 id="stationNom"></h2>
+            </div>
+        </div>
+            <div id="appli" class="row">
+                <div id="map" class="col-lg-8 col-12"></div>
+                <div class="col-lg-4 col-12">
+                    <h3 id="stationNom"></h3>
                     <p id="StationAdresse"></p>
                     <p id="StationVelosDispos"></p>
                     <div id="form">
-                        <hr class="mt-5">
+                        <hr class="mt-2">
                         <form>
-
                             <h3>Formulaire de réservation :</h3>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Nom</label>
-                                <input type="text" class="form-control" id="Name" placeholder="Coupey" required >
+                                <input type="text" class="form-control" id="Name" placeholder="Coupey" required>
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Prénom</label>
-                                <input type="text" class="form-control" id="FirstName" placeholder="Baudouin" required >
+                                <input type="text" class="form-control" id="FirstName" placeholder="Baudouin" required>
                             </div>
                             <p>Signature :</p>
                             <canvas id="c1" style="background-color : #e3e3e3;"></canvas>
@@ -71,6 +72,7 @@
                 </div>
             </div>
         </div>
+
     </div>
 
 </body>
