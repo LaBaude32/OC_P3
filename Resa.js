@@ -43,7 +43,7 @@ class Resa {
         if (minutes>0){
         minutes = minutes;
     }else {
-        let minutes = 19;
+       minutes = 19;
     }
 		this.setDate();
 		let secondes = 60;
