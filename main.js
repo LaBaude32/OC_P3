@@ -43,14 +43,10 @@ function showStation(id) {
 }
 
 let checkForm = new Resa();
-// lancementCompteur.addEventListener('submit', function () {
 lancementCompteur.addEventListener('click', function(e) {
-    checkForm.checkForm();
-    // e.preventDefault();
-    //:TODO utiliser submit de façon a ce que les champs soient completés. -> problème de rechargement de la page.
+    checkForm.checkForm(e);
 });
 
-// let lancementCanvas = document.getElementById('lancementCanvas');
 let lancementCanvas = document.getElementById('c1');
 let canvas = new Resa();
 lancementCanvas.addEventListener('mouseover', function() {

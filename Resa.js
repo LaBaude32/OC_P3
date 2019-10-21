@@ -32,25 +32,55 @@ class Resa {
 			this.formStationNom.innerText = nom;
 			this.formStationAdresse.innerText = "Adresse : " + adresse;
 			this.formStationVelosDispos.innerText = "Nombre de vÃ©los diponibles : " + nbVelosDipos;
+
+			let nomStocked = localStorage.getItem('nom');
+
+			if (nomSotcked != "") {
+				let nomStocked = localStorage.getItem('nom');
+				let prenomSotcked = localStorage.getItem('prenom');
+
+				document.getElementById('Name').value = nomStocked;
+				document.getElementById('FirstName').value = prenomSotcked;
+
+				//TODO: ne fonctionne plus après la fermeture du navigateur
+			}
+
+
+
 		} else {
 			alert('Il n\'y a pas de vÃ©lo disponnible dans cette station.\n\nVeuillez choisir une autre station');
-			//faire une modal, z index + postion css, + position absolute / relative + display, displa block sur l'event click
+			//TODO: faire une modal, z index + postion css, + position absolute / relative + display, displa block sur l'event click
 		}
 	}
 
-	checkForm(){
+	checkForm(e) {
+		let nom = document.getElementById('Name').value;
+		let prenom = document.getElementById('FirstName').value;
+		//TODO: faire une verification sur la signature
+		let canvas = this.ctx;
 
+		if (nom == "" || prenom == "") {
+			alert('pb');
+			e.preventDefault();
+		} else {
+			this.compteur();
+			this.saveName(nom, prenom)
+			e.preventDefault();
+		}
+	}
 
-		this.compteur();
+	saveName(nom, prenom){
+		localStorage.setItem('nom', nom);
+		localStorage.setItem('prenom', prenom);
 	}
 
 	compteur() {
 		let minutes = this.checkDate();
-        if (minutes>0){
-        minutes = minutes;
-    }else {
-       minutes = 19;
-    }
+		if (minutes > 0) {
+			minutes = minutes;
+		} else {
+			minutes = 19;
+		}
 		this.setDate();
 		let secondes = 60;
 		let secondesTxt;
@@ -115,19 +145,19 @@ class Resa {
 		sessionStorage.setItem('date', stockedDate);
 
 		// TODO:  nom et prenom en localStorage, le temps en session.
-		// TODO:  faire un ynds comme en PHP
-		// TODO:
 	}
 
 	checkDate() {
 		let stockedDate = Number(sessionStorage.getItem('date'));
 		let actualDate = Date.now();
 		let difference = actualDate - stockedDate;
-        let min;
+		let min;
 		if (difference > 1000) {
-            console.log(difference);
-            min = Math.floor(difference / 60000);
+			console.log(difference);
+			min = Math.floor(difference / 60000);
 		}
-        return min;
+		return min;
 	}
 }
+
+//TODO : bloquer le form si on est à moins de 20 min et afficher directement le compteur
