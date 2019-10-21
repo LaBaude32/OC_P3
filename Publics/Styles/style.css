@@ -1,12 +1,5 @@
-#explications{
-    display: block;
-}
-
 .imgDiapo {
-    position: absolute;
-    /* visibility: hidden; */
     display: none;
-    margin: 20px;
 }
 
 .active{
@@ -14,19 +7,12 @@
 }
 
 #tuto{
-    /* padding: 20pc; */
-    border: solid;
-    height: 670px;
     text-align: center;
 }
 
-/* #reservation{
-display: block;
-} */
-
 #map {
-    display: block;
-    height: 400px;
+    height: 500px;
+    margin: 15px;
 }
 
 #form{

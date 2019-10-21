@@ -9,69 +9,81 @@
     <!-- <script src="Publics/Bootstrap/js/bootstrap.bundle.min.js"></script> -->
     <link rel="stylesheet" href="Publics/Leaflet/leaflet.css" />
     <script src="Publics/Leaflet/leaflet.js"></script>
-    <link rel="stylesheet" type="text/css" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css" />
-    <link rel="stylesheet" type="text/css" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css" />
-    <script type='text/javascript' src='https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js'></script>
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css"
+        href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css" />
+    <link rel="stylesheet" type="text/css"
+        href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css" />
+    <script type='text/javascript'
+        src='https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js'></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <title>Reservation d'un vélo</title>
 </head>
 
 <body>
     <div class="container mt-5">
-        <div class="row mb-5">
+        <div class="row mb-1">
             <div class="col-12">
-                <h1>Réservation d'un vélo.</h1>
+                <h1>Réservation d'un vélo</h1>
                 <hr>
             </div>
         </div>
         <div id="explications" class="row">
             <div class="col-12">
                 <h2>Comment faire :</h2>
-                <button id="suivant" class="btn btn-primary mt-4">Suivant</button>
-                <div id="tuto">
-                    <img src="Publics/Images/Diapo/1.jpg" alt="image explicative de l'application'" id="slider-0" class="imgDiapo img-fluid active">
-                    <img src="Publics/Images/Diapo/2.jpg" alt="image explicative de l'application'" id="slider-1" class="imgDiapo img-fluid">
-                    <img src="Publics/Images/Diapo/3.jpg" alt="image explicative de l'application'" id="slider-2" class="imgDiapo img-fluid">
-                    <img src="Publics/Images/Diapo/4.jpg" alt="image explicative de l'application'" id="slider-3" class="imgDiapo img-fluid">
-                    <img src="Publics/Images/Diapo/5.jpg" alt="image explicative de l'application'" id="slider-4" class="imgDiapo img-fluid">
-                </div>
+                <button id="suivant" class="btn btn-primary mt-3">Diapo suivante</button>
+            </div>
+        </div>
+        <div class="row mt-2 mb-4">
+            <div id="tuto" class="col-12">
+                <img src="Publics/Images/Diapo/1.jpg" alt="image explicative de l'application'" id="slider-0"
+                    class="imgDiapo img-fluid active">
+                <img src="Publics/Images/Diapo/2.jpg" alt="image explicative de l'application'" id="slider-1"
+                    class="imgDiapo img-fluid">
+                <img src="Publics/Images/Diapo/3.jpg" alt="image explicative de l'application'" id="slider-2"
+                    class="imgDiapo img-fluid">
+                <img src="Publics/Images/Diapo/4.jpg" alt="image explicative de l'application'" id="slider-3"
+                    class="imgDiapo img-fluid">
+                <img src="Publics/Images/Diapo/5.jpg" alt="image explicative de l'application'" id="slider-4"
+                    class="imgDiapo img-fluid">
             </div>
         </div>
         <hr>
         <div id="reservation" class="row mb-2">
             <div class="col-12">
-                <h2>Réserver</h2>
+                <h2>Réserver un vélo :</h2>
             </div>
         </div>
-            <div id="appli" class="row">
-                <div id="map" class="col-lg-8 col-12"></div>
-                <div class="col-lg-4 col-12">
-                    <h3 id="stationNom"></h3>
-                    <p id="StationAdresse"></p>
-                    <p id="StationVelosDispos"></p>
-                    <div id="form">
-                        <hr class="mt-2">
-                        <form>
-                            <h3>Formulaire de réservation :</h3>
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Nom</label>
-                                <input type="text" class="form-control" id="Name" placeholder="Coupey" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Prénom</label>
-                                <input type="text" class="form-control" id="FirstName" placeholder="Baudouin" required>
-                            </div>
-                            <p>Signature :</p>
-                            <canvas id="c1" style="background-color : #e3e3e3;"></canvas>
-                            <p id="test"></p>
-                            <button id="canvasErase" class="btn btn-danger">Effacer</button>
-                            <button type="submit" id="LancementCompteur" class="btn btn-primary"> Valider la réservation</button>
-                        </form>
-                    </div>
-                    <p id="displayTimer" class="font-weight-bold">Temps restant : <span id="compteur"></span></p>
+        <div id="appli" class="row">
+            <div id="map" class="col-lg-8 col-12"></div>
+            <div class="col-lg-3 col-12">
+                <h3 id="stationNom"></h3>
+                <p id="StationAdresse"></p>
+                <p id="StationVelosDispos"></p>
+                <div id="form">
+                    <hr class="mt-2">
+                    <form>
+                        <h3>Formulaire de réservation :</h3>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Nom</label>
+                            <input type="text" class="form-control" id="Name" placeholder="Coupey" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Prénom</label>
+                            <input type="text" class="form-control" id="FirstName" placeholder="Baudouin" required>
+                        </div>
+                        <p>Signature :</p>
+                        <canvas id="c1" style="background-color : #e3e3e3;"></canvas>
+                        <p id="test"></p>
+                        <button id="canvasErase" class="btn btn-danger">Effacer</button>
+                        <button type="submit" id="LancementCompteur" class="btn btn-primary"> Valider la
+                            réservation</button>
+                    </form>
                 </div>
+                <p id="displayTimer" class="font-weight-bold">Temps restant : <span id="compteur"></span></p>
             </div>
         </div>
+    </div>
 
     </div>
 
