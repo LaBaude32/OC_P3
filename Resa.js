@@ -38,6 +38,12 @@ class Resa {
 		}
 	}
 
+	checkForm(){
+
+
+		this.compteur();
+	}
+
 	compteur() {
 		let minutes = this.checkDate();
         if (minutes>0){

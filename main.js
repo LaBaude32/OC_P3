@@ -42,11 +42,11 @@ function showStation(id) {
     resa.initResa(id);
 }
 
-let launchCompteur = new Resa();
+let checkForm = new Resa();
 // lancementCompteur.addEventListener('submit', function () {
 lancementCompteur.addEventListener('click', function(e) {
-    launchCompteur.compteur();
-    e.preventDefault();
+    checkForm.checkForm();
+    // e.preventDefault();
     //:TODO utiliser submit de façon a ce que les champs soient completés. -> problème de rechargement de la page.
 });
 
