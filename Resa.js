@@ -20,6 +20,11 @@ class Resa {
 			});
 	}
 
+	getStokedName() {
+		this.stockedName = localStorage.getItem('nom');
+		this.stockedFirstName = localStorage.getItem('prenom');
+	}
+
 	formHydrate(station) {
 		let nbVelosDipos = station.mainStands.availabilities.bikes;
 		if (nbVelosDipos > 0) {
@@ -33,11 +38,14 @@ class Resa {
 			this.formStationAdresse.innerText = "Adresse : " + adresse;
 			this.formStationVelosDispos.innerText = "Nombre de vÃ©los diponibles : " + nbVelosDipos;
 
-			let nomStocked = localStorage.getItem('nom');
+			sessionStorage.setItem('stationName', nom);
+			sessionStorage.setItem('stationAdresse', adresse);
 
-			if (nomSotcked != "") {
-				let nomStocked = localStorage.getItem('nom');
-				let prenomSotcked = localStorage.getItem('prenom');
+			this.getStokedName();
+
+			if (this.stockedName != "") {
+				let nomStocked = this.stockedName;
+				let prenomSotcked = this.stockedFirstName;
 
 				document.getElementById('Name').value = nomStocked;
 				document.getElementById('FirstName').value = prenomSotcked;
@@ -66,7 +74,6 @@ class Resa {
 	checkForm(e) {
 		let nom = document.getElementById('Name').value;
 		let prenom = document.getElementById('FirstName').value;
-		//TODO: faire une verification sur la signature
 		let canvas = this.ctx;
 
 		let blank = this.isCanvasBlank(this.canvas);
@@ -85,13 +92,13 @@ class Resa {
 		localStorage.setItem('prenom', prenom);
 	}
 
-	compteur() {
-		let minutesStoked = this.checkDate();
+	compteur(min) {
+		let minutesStoked = min;
 		let minutes;
-		if (minutesStoked > 19) {
-			minutes = 19;
-		} else {
+		if (minutesStoked != "undefined") {
 			minutes = minutesStoked;
+		} else {
+			minutes = 19;
 		}
 		this.setDate();
 		let secondes = 60;
@@ -164,12 +171,14 @@ class Resa {
 		let actualDate = Date.now();
 		let difference = actualDate - stockedDate;
 		let min;
-		if (difference > 1000) {
+		if (difference > 1000 && difference < 1200000) {
 			console.log(difference);
 			min = Math.floor(difference / 60000);
+			this.formStationNom.innerText = sessionStorage.getItem('stationName');
+			this.formStationAdresse.innerText = "Adresse : " + sessionStorage.getItem('stationAdresse');
+			this.compteur(min);
 		}
-		return min;
 	}
 }
 
-//TODO : bloquer le form si on est à moins de 20 min et afficher directement le compteur
+//TODO: bloquer le form si on est à moins de 20 min et afficher directement le compteur

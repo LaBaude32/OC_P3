@@ -56,3 +56,7 @@ lancementCanvas.addEventListener('mouseover', function() {
 canvasErase.addEventListener('click', function() {
     canvas.clearCanvas();
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+    checkForm.checkDate();
+});
