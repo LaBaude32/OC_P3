@@ -53,33 +53,45 @@ class Resa {
 		}
 	}
 
+	isCanvasBlank(canvas) {
+		const context = canvas.getContext('2d');
+
+		const pixelBuffer = new Uint32Array(
+			context.getImageData(0, 0, canvas.width, canvas.height).data.buffer
+		);
+
+		return !pixelBuffer.some(color => color !== 0);
+	}
+
 	checkForm(e) {
 		let nom = document.getElementById('Name').value;
 		let prenom = document.getElementById('FirstName').value;
 		//TODO: faire une verification sur la signature
 		let canvas = this.ctx;
 
-		if (nom == "" || prenom == "") {
+		let blank = this.isCanvasBlank(this.canvas);
+		if (nom == "" || prenom == "" || blank == true) {
 			alert('pb');
 			e.preventDefault();
 		} else {
 			this.compteur();
-			this.saveName(nom, prenom)
+			this.saveName(nom, prenom);
 			e.preventDefault();
 		}
 	}
 
-	saveName(nom, prenom){
+	saveName(nom, prenom) {
 		localStorage.setItem('nom', nom);
 		localStorage.setItem('prenom', prenom);
 	}
 
 	compteur() {
-		let minutes = this.checkDate();
-		if (minutes > 0) {
-			minutes = minutes;
-		} else {
+		let minutesStoked = this.checkDate();
+		let minutes;
+		if (minutesStoked > 19) {
 			minutes = 19;
+		} else {
+			minutes = minutesStoked;
 		}
 		this.setDate();
 		let secondes = 60;
