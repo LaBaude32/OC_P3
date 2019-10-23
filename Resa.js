@@ -49,15 +49,14 @@ class Resa {
 
 				document.getElementById('Name').value = nomStocked;
 				document.getElementById('FirstName').value = prenomSotcked;
-
-				//TODO: ne fonctionne plus après la fermeture du navigateur
 			}
 
 
 
 		} else {
-			alert('Il n\'y a pas de vÃ©lo disponnible dans cette station.\n\nVeuillez choisir une autre station');
-			//TODO: faire une modal, z index + postion css, + position absolute / relative + display, displa block sur l'event click
+			let msg = 'Il n\'y a pas de vélo disponnible dans cette station.\n\nVeuillez choisir une autre station.';
+			let  title = "Pas de vélo disponnible";
+			this.displayError(title, msg);
 		}
 	}
 
@@ -78,7 +77,7 @@ class Resa {
 
 		let blank = this.isCanvasBlank(this.canvas);
 		if (nom == "" || prenom == "" || blank == true) {
-			alert('pb');
+			this.displayError('Le formulaire est incomplet', 'Veuillez vérifier que vous avez bien reseigner votre nom, votre prénom et que vous avez signé.');
 			e.preventDefault();
 		} else {
 			this.compteur();
@@ -92,15 +91,17 @@ class Resa {
 		localStorage.setItem('prenom', prenom);
 	}
 
-	compteur(min) {
-		let minutesStoked = min;
+	compteur() {
+		let minutesStoked = this.getDate();
 		let minutes;
-		if (minutesStoked != "undefined") {
-			minutes = minutesStoked;
-		} else {
+		if (minutesStoked == undefined) {
 			minutes = 19;
+		} else {
+			minutes = minutesStoked;
 		}
-		this.setDate();
+		if (!(sessionStorage.getItem('date'))) {
+			this.setDate();
+		}
 		let secondes = 60;
 		let secondesTxt;
 
@@ -162,23 +163,37 @@ class Resa {
 	setDate() {
 		let stockedDate = Date.now();
 		sessionStorage.setItem('date', stockedDate);
-
-		// TODO:  nom et prenom en localStorage, le temps en session.
 	}
 
-	checkDate() {
+	getDate() {
 		let stockedDate = Number(sessionStorage.getItem('date'));
 		let actualDate = Date.now();
 		let difference = actualDate - stockedDate;
 		let min;
 		if (difference > 1000 && difference < 1200000) {
 			console.log(difference);
-			min = Math.floor(difference / 60000);
+			min = Math.floor((1200000 - difference) / 60000);
+		}
+		return min;
+	}
+
+	checkDate() {
+		let minutesStoked = this.getDate();
+		if (minutesStoked < 19) {
 			this.formStationNom.innerText = sessionStorage.getItem('stationName');
 			this.formStationAdresse.innerText = "Adresse : " + sessionStorage.getItem('stationAdresse');
-			this.compteur(min);
+			this.compteur();
 		}
+	}
+
+	displayError(title, msg){
+		let modalTitle = document.getElementById('modalTitle');
+		let modalMsg = document.getElementById('modalMsg');
+		modalMsg.innerText = msg;
+		modalTitle.innerText = title;
+
+		$('#myModal').modal('show');
 	}
 }
 
-//TODO: bloquer le form si on est à moins de 20 min et afficher directement le compteur
+//TODO: verifier ce qu'il se passe si on recharge et que la reservation est expirée
