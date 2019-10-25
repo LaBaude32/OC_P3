@@ -55,7 +55,7 @@ class Resa {
 
 		} else {
 			let msg = 'Il n\'y a pas de vélo disponnible dans cette station.\n\nVeuillez choisir une autre station.';
-			let  title = "Pas de vélo disponnible";
+			let title = "Pas de vélo disponnible";
 			this.displayError(title, msg);
 		}
 	}
@@ -186,7 +186,7 @@ class Resa {
 		}
 	}
 
-	displayError(title, msg){
+	displayError(title, msg) {
 		let modalTitle = document.getElementById('modalTitle');
 		let modalMsg = document.getElementById('modalMsg');
 		modalMsg.innerText = msg;
