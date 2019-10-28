@@ -197,3 +197,5 @@ class Resa {
 }
 
 //TODO: verifier ce qu'il se passe si on recharge et que la reservation est expirée
+
+//TODO: passer la valeur du temps de la reservation en variable this dans le constructeur pour qu'elle soit facile d'accès et simple a modifier
