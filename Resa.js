@@ -6,6 +6,8 @@ class Resa {
 		this.compteurText = document.getElementById('compteur');
 		this.canvas = document.getElementById('c1');
 		this.ctx = this.canvas.getContext('2d');
+		//delais de reservation -1 en min
+		this.resaTime = 19;
 	}
 
 	initResa(ID) {
@@ -95,7 +97,7 @@ class Resa {
 		let minutesStoked = this.getDate();
 		let minutes;
 		if (minutesStoked == undefined) {
-			minutes = 19;
+			minutes = this.resaTime;
 		} else {
 			minutes = minutesStoked;
 		}
@@ -179,7 +181,7 @@ class Resa {
 
 	checkDate() {
 		let minutesStoked = this.getDate();
-		if (minutesStoked < 19) {
+		if (minutesStoked < this.resaTime) {
 			this.formStationNom.innerText = sessionStorage.getItem('stationName');
 			this.formStationAdresse.innerText = "Adresse : " + sessionStorage.getItem('stationAdresse');
 			this.compteur();
@@ -197,5 +199,3 @@ class Resa {
 }
 
 //TODO: verifier ce qu'il se passe si on recharge et que la reservation est expirée
-
-//TODO: passer la valeur du temps de la reservation en variable this dans le constructeur pour qu'elle soit facile d'accès et simple a modifier
