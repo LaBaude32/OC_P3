@@ -1,62 +1,32 @@
-let lancementDiapo = document.getElementById('suivant');
-let lancementCompteur = document.getElementById('LancementCompteur');
-let canvasErase = document.getElementById('canvasErase');
+//CONSTANTES DE CONFIGURATION :
+const lat = 45.7484600;
+const lon = 4.8467100;
+const api_key = "81aa8312fa8a1075e302560e528cf5d1e0887cea";
+const url = "https://api.jcdecaux.com/vls/v3/stations?contract=Lyon&apiKey=" + api_key;
 
+//ListenerAll
+let checkForm = new Resa();
+let canvas = new Resa();
 let diapo = new Diapo();
-
-lancementDiapo.addEventListener('click', diapo.switchDiapo);
+let doc = this.document;
+let myListener = new ListenerAll(checkForm, canvas, diapo, doc);
+myListener.start();
 
 // CARTE
-
-// On initialise la latitude et la longitude de Lyon
-let lat = 45.7484600;
-let lon = 4.8467100;
-
 let markerClusters;
-
-// Fonction d'initialisation de la carte
-function initMap(stations) {
-    // Créer l'objet "macarte" et l'insèrer dans l'élément HTML qui a l'ID "map"
-
-    let macarte = new Map(lat, lon);
-
-    macarte.addMarkerByStations(stations);
-
-    macarte.addLayerToMap(markerClusters);
-}
-
-let api_key = "81aa8312fa8a1075e302560e528cf5d1e0887cea";
-let url = "https://api.jcdecaux.com/vls/v3/stations?contract=Lyon&apiKey=" + api_key;
-
-var stations;
+let stations;
 
 let data = fetch(url)
     .then(response => response.json())
-    .then(function(data) {
+    .then((data) => {
+        console.log();
         stations = data;
-        initMap(stations);
+        let macarte = new Map(lat, lon);
+        macarte.addMarkerByStations(stations);
+        macarte.addLayerToMap(markerClusters);
     });
 
 function showStation(id) {
     let resa = new Resa();
     resa.initResa(id);
 }
-
-let checkForm = new Resa();
-lancementCompteur.addEventListener('click', function(e) {
-    checkForm.checkForm(e);
-});
-
-let lancementCanvas = document.getElementById('c1');
-let canvas = new Resa();
-lancementCanvas.addEventListener('mouseover', function() {
-    canvas.signature();
-});
-
-canvasErase.addEventListener('click', function() {
-    canvas.clearCanvas();
-});
-
-document.addEventListener("DOMContentLoaded", function () {
-    checkForm.checkDate();
-});
